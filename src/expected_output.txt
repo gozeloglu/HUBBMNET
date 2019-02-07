@@ -1,0 +1,100 @@
+---------------------------------------------------------------------------------------
+Command: MESSAGE C E #A few small hops for frames, but a giant leap for this message.#
+---------------------------------------------------------------------------------------
+Message to be sent: A few small hops for frames, but a giant leap for this message.
+
+Frame #1
+Sender MAC address: CCCCCCCCCC, Receiver MAC address: BBBBBBBBBB
+Sender IP address: 8.8.8.8, Receiver IP address: 0.0.1.1
+Sender port number: 3030, Receiver port number: 6666
+Sender ID: C, Receiver ID: E
+Message chunk carried: A few small hops for
+--------
+Frame #2
+Sender MAC address: CCCCCCCCCC, Receiver MAC address: BBBBBBBBBB
+Sender IP address: 8.8.8.8, Receiver IP address: 0.0.1.1
+Sender port number: 3030, Receiver port number: 6666
+Sender ID: C, Receiver ID: E
+Message chunk carried:  frames, but a giant
+--------
+Frame #3
+Sender MAC address: CCCCCCCCCC, Receiver MAC address: BBBBBBBBBB
+Sender IP address: 8.8.8.8, Receiver IP address: 0.0.1.1
+Sender port number: 3030, Receiver port number: 6666
+Sender ID: C, Receiver ID: E
+Message chunk carried:  leap for this messa
+--------
+Frame #4
+Sender MAC address: CCCCCCCCCC, Receiver MAC address: BBBBBBBBBB
+Sender IP address: 8.8.8.8, Receiver IP address: 0.0.1.1
+Sender port number: 3030, Receiver port number: 6666
+Sender ID: C, Receiver ID: E
+Message chunk carried: ge.
+--------
+---------------------------------
+Command: SHOW_FRAME_INFO C out 3
+---------------------------------
+Current Frame #3 on the outgoing queue of client C
+Carried Message: " leap for this messa"
+Layer 0 info: Sender ID: C, Receiver ID: E
+Layer 1 info: Sender port number: 3030, Receiver port number: 6666
+Layer 2 info: Sender IP address: 8.8.8.8, Receiver IP address: 0.0.1.1
+Layer 3 info: Sender MAC address: CCCCCCCCCC, Receiver MAC address: BBBBBBBBBB
+Number of hops so far: 0
+---------------------------
+Command: SHOW_Q_INFO C out
+---------------------------
+Client C Outgoing Queue Status
+Current total number of frames: 4
+--------------------------
+Command: SHOW_Q_INFO C in
+--------------------------
+Client C Incoming Queue Status
+Current total number of frames: 0
+--------------------------------
+Command: SHOW_FRAME_INFO C in 5
+--------------------------------
+No such frame.
+----------------
+Command: SEND C
+----------------
+A message received by client B, but intended for client E. Forwarding...
+        Frame #1 MAC address change: New sender MAC BBBBBBBBBB, new receiver MAC DDDDDDDDDD
+        Frame #2 MAC address change: New sender MAC BBBBBBBBBB, new receiver MAC DDDDDDDDDD
+        Frame #3 MAC address change: New sender MAC BBBBBBBBBB, new receiver MAC DDDDDDDDDD
+        Frame #4 MAC address change: New sender MAC BBBBBBBBBB, new receiver MAC DDDDDDDDDD
+A message received by client D, but intended for client E. Forwarding...
+        Frame #1 MAC address change: New sender MAC DDDDDDDDDD, new receiver MAC EEEEEEEEEE
+        Frame #2 MAC address change: New sender MAC DDDDDDDDDD, new receiver MAC EEEEEEEEEE
+        Frame #3 MAC address change: New sender MAC DDDDDDDDDD, new receiver MAC EEEEEEEEEE
+        Frame #4 MAC address change: New sender MAC DDDDDDDDDD, new receiver MAC EEEEEEEEEE
+A message received by client E from client C after a total of 3 hops.
+Message: A few small hops for frames, but a giant leap for this message.
+---------------------
+Command: PRINT_LOG D
+---------------------
+Client D Logs:
+--------------
+Log Entry #1:
+Timestamp: 2018-9-7 14:49:35
+Message: A few small hops for frames, but a giant leap for this message.
+Number of frames: 4
+Number of hops: 2
+Sender ID: C
+Receiver ID: E
+Activity: Message Received
+Success: Yes
+--------------
+Log Entry #2:
+Timestamp: 2018-9-7 14:49:35
+Message: A few small hops for frames, but a giant leap for this message.
+Number of frames: 4
+Number of hops: 2
+Sender ID: C
+Receiver ID: E
+Activity: Message Forwarded
+Success: Yes
+---------------------
+Command: ORDER pizza
+---------------------
+Invalid command.
